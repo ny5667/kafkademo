@@ -51,7 +51,6 @@ public class KafkaMessageListenerService {
                 String value = record.value();
 
                 // 在这里执行你想要的操作，如打印、处理等
-                System.out.println("Received message: key=" + key + ", value=" + value);
                 log.error("Received message: key={}, value={}", key, value);
             }
         }
