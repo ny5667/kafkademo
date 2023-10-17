@@ -5,6 +5,8 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.Properties;
 
 @Service
 public class KafkaMessageListenerService {
+
+    private static final Logger log = LoggerFactory.getLogger(KafkaMessageListenerService.class);
 
     @Value("${kafka.bootstrap.servers}")
     private String KAFKA_BOOTSTRAP_SERVERS;
@@ -46,6 +50,7 @@ public class KafkaMessageListenerService {
 
                 // 在这里执行你想要的操作，如打印、处理等
                 System.out.println("Received message: key=" + key + ", value=" + value);
+                log.error("Received message: key={}, value={}", key, value);
             }
         }
     }
