@@ -26,6 +26,8 @@ public class KafkaMessageListenerService {
 
     public void run() {
 
+        log.error("进入kafka监听方法。");
+
         // 设置Kafka消费者配置
         Properties props = new Properties();
         props.put("bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS); // Kafka服务器地址和端口
